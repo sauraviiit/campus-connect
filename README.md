@@ -30,44 +30,4 @@ Database: Firebase / MongoDB (Real-time data updates)
 
 Version Control: Git & GitHub
 
-🚀 Getting Started
 
-Follow these instructions to set up the project locally on your machine.
-
-Prerequisites
-
-Make sure you have the following installed:
-
-Node.js (v18 or higher)
-
-npm or yarn
-
-Installation
-
-Clone the repository
-
-git clone [https://github.com/sauraviiit/campus-connect.git](https://github.com/sauraviiit/campus-connect.git)
-cd campus-connect
-
-
-Install dependencies
-
-npm install
-# or
-yarn install
-
-
-Set up Environment Variables
-Create a .env.local file in the root directory and add your database/auth keys:
-
-NEXT_PUBLIC_API_URL=http://localhost:3000
-# Add other keys like Firebase Config or MongoDB URI here
-
-
-Run the development server
-
-npm run dev
-
-
-Open the app
-Visit http://localhost:3000 in your browser.
