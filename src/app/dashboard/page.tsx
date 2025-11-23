@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react'; // useState add kiya
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Sidebar from '@/components/Sidebar';
@@ -10,18 +10,25 @@ import RecentInteractions from '@/components/dashboard/RecentInteractions';
 export default function DashboardPage() {
   const { user, isAuthenticated } = useAuth();
   const router = useRouter();
+  
+  // 1. Ek loading state banao
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      const storedUser = localStorage.getItem('currentUser');
-      if (!storedUser) {
-        router.push('/');
-      }
+    // 2. localStorage ab yahan safe hai
+    const storedUser = localStorage.getItem('currentUser');
+    
+    if (!isAuthenticated && !storedUser) {
+      router.push('/');
+    } else {
+      // Agar sab sahi hai, to loading hata do
+      setIsLoading(false);
     }
   }, [isAuthenticated, router]);
 
-  if (!isAuthenticated && !localStorage.getItem('currentUser')) {
-    return null; // Or a loading spinner
+  // 3. Purani crashing line hata di, ab state check karo
+  if (isLoading) {
+    return null; // Ya yahan <LoadingSpinner /> laga sakte ho
   }
 
   return (
